@@ -1,0 +1,11 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+    database-platform: org.hibernate.dialect.MySQLDialect
+  datasource:
+    url: jdbc:mysql://192.168.99.100:4000/testDb?autoReconnect=true&useSSL=false
+    username: insang@localhost
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    validation-query: select 1

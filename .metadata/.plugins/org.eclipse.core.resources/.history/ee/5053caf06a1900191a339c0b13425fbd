@@ -1,0 +1,20 @@
+spring.profiles.active: it
+
+---
+
+spring:
+  profiles: it
+  jpa:
+    hibernate:
+      ddl-auto: create
+    database-platform: org.hibernate.dialect.MySQLDialect
+  datasource:
+    url: jdbc:mysql://192.168.99.100:4001/testDb?autoReconnect=true&useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    validation-query: select 1
+server:
+  port : 8081
+
+  ---

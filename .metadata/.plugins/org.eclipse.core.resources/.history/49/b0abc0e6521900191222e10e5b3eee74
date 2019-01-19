@@ -1,0 +1,11 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+    database-platform: org.hibernate.dialect.MySQLDialect
+  datasource:
+    url: jdbc:mysql:172.17.0.1:3306/testDb
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    validation-query: select 1

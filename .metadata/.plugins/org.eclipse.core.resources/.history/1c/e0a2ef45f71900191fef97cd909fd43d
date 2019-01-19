@@ -1,0 +1,43 @@
+package org.insang.integrationTests;
+
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.when;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.insang.domain.Member;
+import org.insang.repository.MemberRepository;
+import org.insang.service.Memberservice;
+import org.junit.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class MemberServiceItTest {
+
+	
+	@Autowired
+	Memberservice memberService;
+
+	@Test
+	public void shouldCreateMemberWithNameEmailScore() {
+	
+		Member m = new Member();
+		m.setName("insang");
+		m.setId(1234L);
+		m.setEmail("insang@hansung.ac.kr");
+		m.setScore(30);
+		
+		
+		Member res = memberService.create(m);
+		
+		assertNotNull(res);
+		assertEquals("insang", res.getName());
+		assertEquals("insang@hansung.ac.kr", res.getEmail());
+		assertEquals(30, res.getScore());
+		
+		
+	}
+}

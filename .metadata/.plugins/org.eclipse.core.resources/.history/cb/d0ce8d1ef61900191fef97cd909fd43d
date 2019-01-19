@@ -1,0 +1,14 @@
+package org.insang.integrationTests;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class MemberServiceItTest {
+
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}

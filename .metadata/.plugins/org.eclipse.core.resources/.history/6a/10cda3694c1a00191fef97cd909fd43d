@@ -1,0 +1,44 @@
+package org.insang.acceptanceTests;
+
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class DemoControllerTests2 { 
+	
+  @MockBean
+  private Memberservice memberService;
+    
+
+  @Test
+  public void createNewMember() {
+	  TestRestTemplate rt = new TestRestTemplate();
+	  Member m = new Member();
+	  m.setName("insang");
+	  m.setEmail("insang@hansung.ac.kr");
+	  m.setScore(30);
+	  ResponseEntity<Member> mem = rt.postForEntity("http://localhost:8080/member", m, Member.class);
+	  assertEquals("insang", mem.getBody().getName());
+	  assertEquals("insang@hansung.ac.kr", mem.getBody().getEmail());
+	  assertEquals(30, mem.getBody().getScore());
+  }
+  
+  @Test
+  public void deleteMember() {
+	  TestRestTemplate rt = new TestRestTemplate();
+	  Member m = new Member();
+	  m.setName("insang");
+	  m.setEmail("insang@hansung.ac.kr");
+	  m.setScore(30);
+	  ResponseEntity<Member> mem = rt.postForEntity("http://localhost:8080/member", m, Member.class);
+	  
+	  HttpHeaders headers = new HttpHeaders();
+	  HttpEntity entity = new HttpEntity(headers);
+	  ResponseEntity<Void> re = rt.exchange(mem.getHeaders().getLocation(), HttpMethod.DELETE, entity, Void.class);
+	  
+	  assertEquals(HttpStatus.OK, re.getStatusCode());
+	 
+	  
+  }
+}

@@ -1,0 +1,27 @@
+spring.profiles.active: unit
+
+---
+
+spring:
+  profiles: it
+  jpa:
+    hibernate:
+      ddl-auto: create
+    database-platform: org.hibernate.dialect.MySQLDialect
+  datasource:
+    url: jdbc:mysql://192.168.99.100:4001/testDb?autoReconnect=true&useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    validation-query: select 1
+ server:
+  port : 8081
+  
+  ---
+ spring:
+  profiles: unit
+  datasource:
+    driver-class-name: org.h2.Driver
+ server:
+  port : 8081
+  
